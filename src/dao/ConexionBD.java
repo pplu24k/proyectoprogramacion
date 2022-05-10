@@ -26,12 +26,12 @@ public class ConexionBD {
         
         try{
             //Ingresar ruta para conexion de BBDD
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital","hospital","hospital");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestionjudo","root","");
             sta = con.createStatement();
-            sta.executeUpdate("delete from user");
             
         }catch(Exception e){
             System.out.println("No se puede conectar a la BBDD!!");
+            System.out.println(e.getMessage());
         }
         
     }
@@ -50,6 +50,9 @@ public class ConexionBD {
     }
     
     public static ConexionBD instancia() {
+        if(instancia==null){
+            instancia = new ConexionBD();
+        }
         return instancia;
     }
     
