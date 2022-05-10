@@ -1,27 +1,29 @@
 package modelo.administracion_registro;
 
-public class Usuario {
+import java.util.SortedSet;
 
-    public static enum TipoUsuario {
-        ADMINISTRADOR, GESTOR_COMPETICIONES, JUDOKA
+/**
+ *
+ * @author Usuario01
+ */
+public class Club {
+    private String cif;
+    private String nombre;
+    private String domicilioDelClub;
+    private String telefonoPrincipal;
+    private String telefonoSecundario;
+    private String correoPersona;
+    SortedSet<Persona> persona;
+
+  
+    public Club(String cif, String nombre, String domicilioDelClub, String telefonoPrincipal, String telefonoSecundario, String correoPersona, SortedSet<Persona> persona) {
+        this.cif = cif;
+        this.nombre = nombre;
+        this.domicilioDelClub = domicilioDelClub;
+        this.telefonoPrincipal = telefonoPrincipal;
+        this.telefonoSecundario = telefonoSecundario;
+        this.correoPersona = correoPersona;
+        this.persona = persona;
     }
-
-    public String nombre_usuario;
-    private String contraseña;
-    private TipoUsuario tipoUsuario;
-
-    public Usuario(String nombre_usuario, String contraseña, TipoUsuario tipoUsuario) {
-        this.nombre_usuario = nombre_usuario;
-        this.contraseña = contraseña;
-        this.tipoUsuario = tipoUsuario;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
+    
 }
