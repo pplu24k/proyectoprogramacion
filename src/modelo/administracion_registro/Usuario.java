@@ -9,7 +9,7 @@ package modelo.administracion_registro;
 public class Usuario {
     
     public static enum TipoUsuario{
-        ADMINISTRADOR, GESTOR_COMPETICIONES, JUDOKA
+        ADMINISTRADOR, GESTOR_COMPETICIONES, NORMAL
     }
     
     public String nombre_usuario;
@@ -28,6 +28,11 @@ public class Usuario {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+    }
+    
+    public TipoUsuario getTipoUsuario(){
+    
+        return tipoUsuario;
     }
 
     

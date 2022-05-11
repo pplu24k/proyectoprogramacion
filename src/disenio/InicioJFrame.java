@@ -6,6 +6,9 @@ package disenio;
 
 import dao.*;
 import static javax.swing.JOptionPane.showMessageDialog;
+import modelo.SistemaFederacionJudo;
+import modelo.administracion_registro.*;
+import modelo.administracion_registro.Usuario.TipoUsuario;
 /**
  *
  * @author josel
@@ -17,8 +20,15 @@ public class InicioJFrame extends javax.swing.JFrame {
      */
     public InicioJFrame() {
         initComponents();
+
+        setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
+
+
+        
+        
+                
     }
 
     /**
@@ -33,75 +43,143 @@ public class InicioJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         nick = new javax.swing.JTextField();
         pass = new javax.swing.JPasswordField();
-        iniciaSesion = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        EntrarNormal = new javax.swing.JButton();
+        TextoNick = new javax.swing.JLabel();
+        TextoContraseña = new javax.swing.JLabel();
+        EntrarAnonimo = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nick.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.add(nick, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 252, 110, 30));
+        jPanel1.add(nick, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, 30));
 
         pass.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 110, 30));
+        jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 110, 30));
 
-        iniciaSesion.setText("Iniciar sesion");
-        iniciaSesion.addActionListener(new java.awt.event.ActionListener() {
+        EntrarNormal.setText("Iniciar sesion");
+        EntrarNormal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                iniciaSesionActionPerformed(evt);
+                EntrarNormalActionPerformed(evt);
             }
         });
-        jPanel1.add(iniciaSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 362, -1, 30));
+        jPanel1.add(EntrarNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, -1, 30));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre de usuario");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
+        TextoNick.setForeground(new java.awt.Color(255, 255, 255));
+        TextoNick.setText("Nombre de usuario");
+        jPanel1.add(TextoNick, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, -1, -1));
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Contraseña");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
+        TextoContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        TextoContraseña.setText("Contraseña");
+        jPanel1.add(TextoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
 
-        jButton1.setText("Entrar sin identificacion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        EntrarAnonimo.setText("Entrar sin identificacion");
+        EntrarAnonimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                EntrarAnonimoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 362, 170, 30));
+        jPanel1.add(EntrarAnonimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, 170, 30));
 
-        jScrollPane1.setViewportView(jTextPane1);
+        Titulo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 34)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(204, 204, 204));
+        Titulo.setText("Federacion de Judo");
+        jPanel1.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LetrasD.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 70, 100));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/foninicio.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 1, 390, 440));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 440));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/minimizar.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        jLabel2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel2KeyPressed(evt);
+            }
+        });
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(291, 10, 20, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/foninicio.jpg"))); // NOI18N
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, -9, 370, 460));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void iniciaSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciaSesionActionPerformed
+    private void EntrarNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarNormalActionPerformed
 
-        if(nick.getText().equals("") && pass.getText().equals("")){
+        String tipo;
+        Usuario user = null;
+        SistemaFederacionJudo sfj = new SistemaFederacionJudo();
+        if(nick.getText().equals("") || pass.getText().equals("")){
         
             showMessageDialog(null, "Debes rellenar los dos campos.");
         }
         else{
-            System.out.println(Dao.instancia().comprobarUsuario(nick.getText(), pass.getText()));
-        }
-    }//GEN-LAST:event_iniciaSesionActionPerformed
+            
+            if(sfj.comprobarUsuario(nick.getText(),pass.getText())){
+                tipo = sfj.getTipoUsuario(nick.getText());
+                
+                user = new Usuario(nick.getText(),pass.getText(),TipoUsuario.valueOf(tipo));
+                
+                
+                if(user.getTipoUsuario() == TipoUsuario.ADMINISTRADOR){
+                    System.out.println("ADMIN");
+                }
+                else if(user.getTipoUsuario() == TipoUsuario.GESTOR_COMPETICIONES){
+                    System.out.println("GESTOR_COMPETICIONES");
+                }
+                else if(user.getTipoUsuario() == TipoUsuario.NORMAL){
+                    System.out.println("NORMAL");
+                }
+            }
+            else{
+            
+                
+                showMessageDialog(null, "Las credenciales no son correctas");
+                
+            }
+            
+            
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        }
+    }//GEN-LAST:event_EntrarNormalActionPerformed
+
+    private void EntrarAnonimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarAnonimoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_EntrarAnonimoActionPerformed
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel2KeyPressed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -116,7 +194,7 @@ public class InicioJFrame extends javax.swing.JFrame {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+                    break; 
                 }
             }
         } catch (ClassNotFoundException ex) {
@@ -134,20 +212,22 @@ public class InicioJFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InicioJFrame().setVisible(true);
+                new InicioJFrame();
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton iniciaSesion;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton EntrarAnonimo;
+    private javax.swing.JButton EntrarNormal;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel TextoContraseña;
+    private javax.swing.JLabel TextoNick;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextField nick;
     private javax.swing.JPasswordField pass;
     // End of variables declaration//GEN-END:variables
