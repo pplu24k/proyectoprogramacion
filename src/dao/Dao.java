@@ -82,6 +82,12 @@ public class Dao {
         return tipoUsuario;
         
     }
+        
+        public void guardarPersona(){
+        
+            
+            
+        }
     
 
 

@@ -6,6 +6,7 @@ package disenio;
 
 import disenio.admin.AdministradorJFrame;
 import dao.*;
+
 import static javax.swing.JOptionPane.showMessageDialog;
 import modelo.SistemaFederacionJudo;
 import modelo.administracion_registro.*;
@@ -21,13 +22,14 @@ public class InicioJFrame extends javax.swing.JFrame {
      */
     public InicioJFrame() {
         initComponents();
-
-        setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
-
-
+        setVisible(true);
         
+        
+        
+        
+                
         
                 
     }

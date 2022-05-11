@@ -8,9 +8,6 @@ package modelo.administracion_registro;
 
 public class Usuario {
     
-    public static enum TipoUsuario{
-        ADMINISTRADOR, GESTOR_COMPETICIONES, NORMAL
-    }
     
     public String nombre_usuario;
     private String contraseña;
@@ -33,6 +30,14 @@ public class Usuario {
     public TipoUsuario getTipoUsuario(){
     
         return tipoUsuario;
+    }
+    public static enum TipoUsuario{
+        ADMINISTRADOR, GESTOR_COMPETICIONES, NORMAL
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nombre_usuario=" + nombre_usuario + ", contrase\u00f1a=" + contraseña + ", tipoUsuario=" + tipoUsuario.toString() + '}';
     }
 
     
