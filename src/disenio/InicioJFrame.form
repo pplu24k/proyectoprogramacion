@@ -40,7 +40,7 @@
         <Component class="javax.swing.JTextField" name="nick">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+              <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -52,7 +52,7 @@
         <Component class="javax.swing.JPasswordField" name="pass">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+              <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
           </Properties>
           <Constraints>
@@ -63,6 +63,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="EntrarNormal">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Iniciar sesion"/>
           </Properties>
           <Events>
@@ -102,6 +105,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="EntrarAnonimo">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Entrar sin identificacion"/>
           </Properties>
           <Events>

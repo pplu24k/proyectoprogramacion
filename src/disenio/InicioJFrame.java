@@ -4,6 +4,7 @@
  */
 package disenio;
 
+import disenio.admin.AdministradorJFrame;
 import dao.*;
 import static javax.swing.JOptionPane.showMessageDialog;
 import modelo.SistemaFederacionJudo;
@@ -59,12 +60,13 @@ public class InicioJFrame extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        nick.setBackground(new java.awt.Color(204, 204, 204));
+        nick.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.add(nick, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, 30));
 
-        pass.setBackground(new java.awt.Color(204, 204, 204));
+        pass.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.add(pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 110, 30));
 
+        EntrarNormal.setBackground(new java.awt.Color(204, 204, 204));
         EntrarNormal.setText("Iniciar sesion");
         EntrarNormal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +83,7 @@ public class InicioJFrame extends javax.swing.JFrame {
         TextoContraseña.setText("Contraseña");
         jPanel1.add(TextoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
 
+        EntrarAnonimo.setBackground(new java.awt.Color(204, 204, 204));
         EntrarAnonimo.setText("Entrar sin identificacion");
         EntrarAnonimo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +148,8 @@ public class InicioJFrame extends javax.swing.JFrame {
                 
                 if(user.getTipoUsuario() == TipoUsuario.ADMINISTRADOR){
                     System.out.println("ADMIN");
+                    hide();
+                    AdministradorJFrame admnjf = new AdministradorJFrame(user);
                 }
                 else if(user.getTipoUsuario() == TipoUsuario.GESTOR_COMPETICIONES){
                     System.out.println("GESTOR_COMPETICIONES");
