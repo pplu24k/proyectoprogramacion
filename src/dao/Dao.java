@@ -12,9 +12,9 @@ import java.util.logging.Logger;
  *
  * @author Alumno
  */
-public class AccionesBD {
+public class Dao {
     
-    static AccionesBD instancia = null;
+    static Dao instancia = null;
     
     
     public boolean comprobarUsuario(String nom, String con){
@@ -36,7 +36,7 @@ public class AccionesBD {
             
             
         } catch (SQLException ex) {
-            Logger.getLogger(AccionesBD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return existe;
@@ -46,10 +46,10 @@ public class AccionesBD {
 
     
     
-    public static AccionesBD instancia(){
+    public static Dao instancia(){
     
         if(instancia==null){
-            instancia = new AccionesBD();
+            instancia = new Dao();
         }
         return instancia;
     }

@@ -26,7 +26,7 @@ public class ConexionBD {
         
         try{
             //Ingresar ruta para conexion de BBDD
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gestionjudo","root","");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/judo","root","");
             sta = con.createStatement();
             
         }catch(Exception e){
