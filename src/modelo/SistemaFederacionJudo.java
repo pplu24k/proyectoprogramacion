@@ -42,6 +42,10 @@ public class SistemaFederacionJudo {
         return Dao.instancia().comprobarDniRepetido(dni);
         
     }
+    public Persona cargarPersona(Usuario sesion){
+    
+        return Dao.instancia().cargarPersona(sesion);
+    }
     
     
     

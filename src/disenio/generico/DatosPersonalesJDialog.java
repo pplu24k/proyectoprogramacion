@@ -4,6 +4,8 @@
  */
 package disenio.generico;
 
+import modelo.SistemaFederacionJudo;
+import modelo.administracion_registro.Domicilio;
 import modelo.administracion_registro.Persona;
 import modelo.administracion_registro.Usuario;
 
@@ -16,11 +18,14 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
     
     private String conAsteriscos ="";
     private Usuario sesion;
+    private Persona datos;
+    private Domicilio dom;
     
     public DatosPersonalesJDialog(java.awt.Frame parent, boolean modal, Usuario u) {
         super(parent, modal);
         initComponents();
         sesion = u;
+        
         tipo.setText(tipo.getText() + u.getTipoUsuario().toString());
         nomUsuario.setText(nomUsuario.getText() + u.getNickName());
         
@@ -29,6 +34,19 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
             conAsteriscos+= "* ";
         }
         contraseña.setText("Contraseña: " + conAsteriscos);
+        datos = new SistemaFederacionJudo().cargarPersona(u);
+        dom = datos.getDomicilio();
+        dni.setText("DNI: " + datos.getDni().toString());
+        nombre.setText("Nombre: " + datos.getNombre());
+        apellido1.setText("Primer apellido: " + datos.getApellido1());
+        apellido2.setText("Segundo apellido: " + datos.getApellido2());
+        fNacimiento.setText("Fecha de nacimiento: " + datos.getFechaNacimiento().toString());
+        sexo.setText("Sexo: " + datos.getSexo().toString());
+        direccion.setText("Direccion: " + dom.getDIRECCION());
+        cp.setText("Codigo postal: " + dom.getCODIGO_POSTAL());
+        municipio.setText("Municipio: " + dom.getMUNICIPIO());
+        provincia.setText("Provincia: " + dom.getPROVINCIA());
+        
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
@@ -54,6 +72,16 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
         tipo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        dni = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
+        apellido1 = new javax.swing.JLabel();
+        apellido2 = new javax.swing.JLabel();
+        fNacimiento = new javax.swing.JLabel();
+        sexo = new javax.swing.JLabel();
+        direccion = new javax.swing.JLabel();
+        cp = new javax.swing.JLabel();
+        municipio = new javax.swing.JLabel();
+        provincia = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,20 +97,20 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(126, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addGap(118, 118, 118))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel3)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 516, -1));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 516, 80));
 
         jButton3.setText("Volver");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,15 +123,15 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 403, -1, -1));
+        jPanel5.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, -1, -1));
 
         nomUsuario.setForeground(new java.awt.Color(0, 0, 0));
         nomUsuario.setText("Nombre de usuario: ");
-        jPanel5.add(nomUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 180, 30));
+        jPanel5.add(nomUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 180, 30));
 
         contraseña.setForeground(new java.awt.Color(0, 0, 0));
         contraseña.setText("Contraseña: ");
-        jPanel5.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 197, 150, -1));
+        jPanel5.add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 150, -1));
 
         tipo.setForeground(new java.awt.Color(0, 0, 0));
         tipo.setText("Tipo de usuario: ");
@@ -118,10 +146,50 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
                 jLabel5MouseReleased(evt);
             }
         });
-        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
+        jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
 
         jButton4.setText("Cambiar");
-        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, -1, -1));
+        jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
+
+        dni.setForeground(new java.awt.Color(0, 0, 0));
+        dni.setText("DNI: ");
+        jPanel5.add(dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 140, -1));
+
+        nombre.setForeground(new java.awt.Color(0, 0, 0));
+        nombre.setText("Nombre: ");
+        jPanel5.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+
+        apellido1.setForeground(new java.awt.Color(0, 0, 0));
+        apellido1.setText("Primer apellido: ");
+        jPanel5.add(apellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+
+        apellido2.setForeground(new java.awt.Color(0, 0, 0));
+        apellido2.setText("Segundo apellido: ");
+        jPanel5.add(apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+
+        fNacimiento.setForeground(new java.awt.Color(0, 0, 0));
+        fNacimiento.setText("Fecha de nacimiento: ");
+        jPanel5.add(fNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+
+        sexo.setForeground(new java.awt.Color(0, 0, 0));
+        sexo.setText("Sexo: ");
+        jPanel5.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+
+        direccion.setForeground(new java.awt.Color(0, 0, 0));
+        direccion.setText("Direccion: ");
+        jPanel5.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
+
+        cp.setForeground(new java.awt.Color(0, 0, 0));
+        cp.setText("Código postal: ");
+        jPanel5.add(cp, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
+
+        municipio.setForeground(new java.awt.Color(0, 0, 0));
+        municipio.setText("Municipio: ");
+        jPanel5.add(municipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
+
+        provincia.setForeground(new java.awt.Color(0, 0, 0));
+        provincia.setText("Provincia: ");
+        jPanel5.add(provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,7 +199,7 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
         );
 
         pack();
@@ -161,23 +229,25 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellido1;
+    private javax.swing.JLabel apellido2;
     private javax.swing.JLabel contraseña;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel cp;
+    private javax.swing.JLabel direccion;
+    private javax.swing.JLabel dni;
+    private javax.swing.JLabel fNacimiento;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JLabel municipio;
     private javax.swing.JLabel nomUsuario;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JLabel provincia;
+    private javax.swing.JLabel sexo;
     private javax.swing.JLabel tipo;
     // End of variables declaration//GEN-END:variables
 }

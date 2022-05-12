@@ -6,9 +6,14 @@ package dao;
 
 import dao.excepciones.SinTipoUsuario;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.administracion_registro.Dni;
+import modelo.administracion_registro.Domicilio;
 import modelo.administracion_registro.Persona;
+import modelo.administracion_registro.Persona.Sexo;
 import modelo.administracion_registro.Usuario;
 
 /**
@@ -18,7 +23,8 @@ import modelo.administracion_registro.Usuario;
 public class Dao {
 
     static Dao instancia = null;
-
+    private static DateTimeFormatter formatoEuropeo = DateTimeFormatter.ofPattern("dd/LL/yyyy");
+    
     public boolean comprobarUsuario(String nom, String con) {
 
         boolean existe = false;
@@ -120,6 +126,43 @@ public class Dao {
         }
     
         return repetido;
+    }
+    
+    public Persona cargarPersona(Usuario sesion){
+    
+        ResultSet rs;
+        
+        Domicilio dom = null;
+        Persona nPersona = null;
+        try {
+            dom = cargarDomicilio(sesion.getNickName());
+            rs = ConexionBD.instancia().getStatement().executeQuery("SELECT `Dni`, `nombre`, `ape1`, `ape2`, `fecha_nac`, `sexo` FROM `persona` WHERE nick = '"+sesion.getNickName()+"'");
+            rs.next();
+            nPersona = new Persona(new Dni(Integer.parseInt(rs.getString("dni"))),LocalDate.parse(rs.getString("fecha_nac"), formatoEuropeo),rs.getString("nombre"),rs.getString("ape1"),rs.getString("ape2"),Sexo.valueOf(rs.getString("sexo")),dom);
+            
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+        return nPersona;
+    }
+    private Domicilio cargarDomicilio(String dueño){
+    
+        Domicilio dom = null;
+    
+            try{
+            ResultSet rs = ConexionBD.instancia().getStatement().executeQuery("SELECT `direccion`, `cod_postal`, `municipio`, `provincia` FROM `domicilio` WHERE dueño = '"+dueño+"'");
+            rs.next();
+            System.out.println(rs.getString("direccion"));
+            dom = new Domicilio(rs.getString("direccion"),rs.getString("cod_postal"),rs.getString("municipio"),rs.getString("provincia"));
+            ConexionBD.instancia().desconectar();
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+        return dom;
     }
 
     public static Dao instancia() {
