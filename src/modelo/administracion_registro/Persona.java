@@ -79,7 +79,7 @@ public class Persona {
         nname += (apellido2.charAt(0));
         nname += (LocalDate.now().getDayOfMonth());
 
-        System.out.println(nname);
+
 
         int lenPass;
         String pass = "";
@@ -99,6 +99,38 @@ public class Persona {
 
         return newUser;
 
+    }
+
+    public Dni getDni() {
+        return dni;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido1() {
+        return apellido1;
+    }
+
+    public String getApellido2() {
+        return apellido2;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public Domicilio getDomicilio() {
+        return domicilio;
     }
 
     @Override

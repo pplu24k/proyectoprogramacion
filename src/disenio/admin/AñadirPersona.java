@@ -7,13 +7,14 @@ package disenio.admin;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.text.MaskFormatter;
+import modelo.SistemaFederacionJudo;
 import modelo.administracion_registro.Dni;
 import modelo.administracion_registro.Domicilio;
 import modelo.administracion_registro.Persona;
 import modelo.administracion_registro.Persona.Sexo;
 import modelo.administracion_registro.Usuario.TipoUsuario;
-
 
 /**
  *
@@ -21,16 +22,26 @@ import modelo.administracion_registro.Usuario.TipoUsuario;
  */
 public class AñadirPersona extends javax.swing.JDialog {
 
-
-    boolean finalizado = false;
-    Persona nPersona = null;
+    private boolean finalizado = false;
+    private Persona nPersona = null;
     private static DateTimeFormatter formatoEuropeo = DateTimeFormatter.ofPattern("dd/LL/yyyy");
+
     public AñadirPersona(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        
+
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    public boolean getFinalizado() {
+
+        return finalizado;
+    }
+
+    public Persona getPersona() {
+
+        return nPersona;
     }
 
     /**
@@ -276,23 +287,46 @@ public class AñadirPersona extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        TipoUsuario tipo;
-        Domicilio dom = new Domicilio(cDireccion.getText(),cCodigoPostal.getText(),cMunicipio.getText(),cProvincia.getText());
-        
-        if(cCategoria.getSelectedIndex() == 0){
-            tipo = TipoUsuario.ADMINISTRADOR;
+        TipoUsuario tipo = null;
+        Domicilio dom = null;
+        SistemaFederacionJudo sfj = new SistemaFederacionJudo();
+        if (cDni.getText().equals("") || cNombre.getText().equals("") || cApellido1.equals("") || cApellido2.equals("") || cFNacimiento.getText().equals("") || cDireccion.getText().equals("") || cCodigoPostal.getText().equals("") || cMunicipio.getText().equals("") || cProvincia.getText().equals("")) {
+
+            showMessageDialog(null, "Debes rellenar todos los campos");
+
+        } else {
+            if (!Dni.comporbarDni(cDni.getText())) {
+                showMessageDialog(null, "El dni no es válido");
+            } else {
+                
+                if (sfj.comprobarDniRepetido(cDni.getText())) {
+                    showMessageDialog(null, "Ya existe una persona registrada con ese dni");
+                } else {
+
+                    dom = new Domicilio(cDireccion.getText(), cCodigoPostal.getText(), cMunicipio.getText(), cProvincia.getText());
+
+                    if (cCategoria.getSelectedIndex() == 0) {
+                        tipo = TipoUsuario.ADMINISTRADOR;
+                    } else if (cCategoria.getSelectedIndex() == 1) {
+                        tipo = TipoUsuario.GESTOR_COMPETICIONES;
+                    } else {
+                        tipo = TipoUsuario.NORMAL;
+                    }
+
+                    nPersona = new Persona(new Dni(Integer.parseInt(cDni.getText())), LocalDate.parse(cFNacimiento.getText(), formatoEuropeo), cNombre.getText(), cApellido1.getText(), cApellido2.getText(), Sexo.valueOf((String) cSexo.getSelectedItem()), dom, tipo);
+                    if (!sfj.comprobarUsuarioRepetido(nPersona.getUsuario())) {
+
+                        
+                        finalizado = true;
+                        hide();
+                    } else {
+                        showMessageDialog(null, "Estas intentando añadir a una persona existente!");
+                    }
+                }
+            }
         }
-        else if(cCategoria.getSelectedIndex() == 1){
-            tipo = TipoUsuario.GESTOR_COMPETICIONES;
-        }
-        else{
-            tipo = TipoUsuario.NORMAL;
-        }
-        
-        //
-        nPersona = new Persona(new Dni(Integer.parseInt(cDni.getText())),LocalDate.parse(cFNacimiento.getText(), formatoEuropeo),cNombre.getText(),cApellido1.getText(),cApellido2.getText(),Sexo.valueOf((String)cSexo.getSelectedItem()),dom,tipo);
-        System.out.println(nPersona.toString());
-        
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

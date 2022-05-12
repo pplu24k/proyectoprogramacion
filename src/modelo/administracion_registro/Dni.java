@@ -20,4 +20,29 @@ public Dni(int numero){
     
 
 }
+
+
+    @Override
+    public String toString(){
+        
+        String num = "" + numero;
+        return ( num + letra);
+}
+    public static boolean comporbarDni(String dni){
+    
+        boolean valido=false;
+        
+        if(dni.length()==8){
+        try{
+            Integer.parseInt(dni);
+            valido = true;
+        }catch(Exception e){
+            
+        }
+        }
+        
+        return valido;
+        
+    }
+    
 }

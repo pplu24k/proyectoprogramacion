@@ -75,6 +75,11 @@ public class InicioJFrame extends javax.swing.JFrame {
                 EntrarNormalActionPerformed(evt);
             }
         });
+        EntrarNormal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EntrarNormalKeyPressed(evt);
+            }
+        });
         jPanel1.add(EntrarNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, -1, 30));
 
         TextoNick.setForeground(new java.awt.Color(255, 255, 255));
@@ -187,6 +192,10 @@ public class InicioJFrame extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void EntrarNormalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EntrarNormalKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EntrarNormalKeyPressed
 
     /**
      * @param args the command line arguments

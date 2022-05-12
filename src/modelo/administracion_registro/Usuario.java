@@ -19,6 +19,10 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public String getNickName(){
+    
+        return nombre_usuario;
+    }
     public String getContraseña() {
         return contraseña;
     }
@@ -31,6 +35,7 @@ public class Usuario {
     
         return tipoUsuario;
     }
+    
     public static enum TipoUsuario{
         ADMINISTRADOR, GESTOR_COMPETICIONES, NORMAL
     }

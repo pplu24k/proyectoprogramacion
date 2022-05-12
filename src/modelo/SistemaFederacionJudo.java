@@ -27,6 +27,21 @@ public class SistemaFederacionJudo {
     
         return Dao.instancia().getTipoUsuario(nom);
     }
+    public void guardarPersona(Persona p){
+    
+        Dao.instancia().guardarPersona(p);
+    }
+    public boolean comprobarUsuarioRepetido(Usuario u){
+    
+        
+        
+        return Dao.instancia().comprobarUsuarioRepetido(u);
+    }
+    public boolean comprobarDniRepetido(String dni){
+    
+        return Dao.instancia().comprobarDniRepetido(dni);
+        
+    }
     
     
     
