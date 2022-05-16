@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package disenio.generico;
 
@@ -13,16 +13,14 @@ import modelo.administracion_registro.Usuario;
  *
  * @author Alumno
  */
-public class DatosPersonalesJDialog extends javax.swing.JDialog {
+public class DatosPersonalesJFrame extends javax.swing.JFrame {
 
-    
     private String conAsteriscos ="";
     private Usuario sesion;
     private Persona datos;
     private Domicilio dom;
     
-    public DatosPersonalesJDialog(java.awt.Frame parent, boolean modal, Usuario u) {
-        super(parent, modal);
+    public DatosPersonalesJFrame(Usuario u) {
         initComponents();
         sesion = u;
         
@@ -50,7 +48,6 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
-        
     }
 
     /**
@@ -62,7 +59,6 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollBar1 = new javax.swing.JScrollBar();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -83,7 +79,7 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
         municipio = new javax.swing.JLabel();
         provincia = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,7 +94,7 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(118, 118, 118))
         );
@@ -127,7 +123,7 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
 
         nomUsuario.setForeground(new java.awt.Color(0, 0, 0));
         nomUsuario.setText("Nombre de usuario: ");
-        jPanel5.add(nomUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 180, 30));
+        jPanel5.add(nomUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 220, 30));
 
         contraseña.setForeground(new java.awt.Color(0, 0, 0));
         contraseña.setText("Contraseña: ");
@@ -135,7 +131,7 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
 
         tipo.setForeground(new java.awt.Color(0, 0, 0));
         tipo.setText("Tipo de usuario: ");
-        jPanel5.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 119, 200, -1));
+        jPanel5.add(tipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 119, 260, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ver-contraseña.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -149,47 +145,52 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
         jPanel5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
 
         jButton4.setText("Cambiar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         dni.setForeground(new java.awt.Color(0, 0, 0));
         dni.setText("DNI: ");
-        jPanel5.add(dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 140, -1));
+        jPanel5.add(dni, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 150, -1));
 
         nombre.setForeground(new java.awt.Color(0, 0, 0));
         nombre.setText("Nombre: ");
-        jPanel5.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        jPanel5.add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 220, -1));
 
         apellido1.setForeground(new java.awt.Color(0, 0, 0));
         apellido1.setText("Primer apellido: ");
-        jPanel5.add(apellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        jPanel5.add(apellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 320, -1));
 
         apellido2.setForeground(new java.awt.Color(0, 0, 0));
         apellido2.setText("Segundo apellido: ");
-        jPanel5.add(apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        jPanel5.add(apellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 330, -1));
 
         fNacimiento.setForeground(new java.awt.Color(0, 0, 0));
         fNacimiento.setText("Fecha de nacimiento: ");
-        jPanel5.add(fNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+        jPanel5.add(fNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 290, -1));
 
         sexo.setForeground(new java.awt.Color(0, 0, 0));
         sexo.setText("Sexo: ");
-        jPanel5.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+        jPanel5.add(sexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 240, -1));
 
         direccion.setForeground(new java.awt.Color(0, 0, 0));
         direccion.setText("Direccion: ");
-        jPanel5.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
+        jPanel5.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 280, -1));
 
         cp.setForeground(new java.awt.Color(0, 0, 0));
         cp.setText("Código postal: ");
-        jPanel5.add(cp, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, -1, -1));
+        jPanel5.add(cp, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 250, -1));
 
         municipio.setForeground(new java.awt.Color(0, 0, 0));
         municipio.setText("Municipio: ");
-        jPanel5.add(municipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
+        jPanel5.add(municipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 220, -1));
 
         provincia.setForeground(new java.awt.Color(0, 0, 0));
         provincia.setText("Provincia: ");
-        jPanel5.add(provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
+        jPanel5.add(provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 200, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,29 +200,34 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
+
+    }//GEN-LAST:event_jButton3MousePressed
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        hide();
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MousePressed
-        
-    }//GEN-LAST:event_jButton3MousePressed
 
     private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
         contraseña.setText("Contraseña: " + sesion.getContraseña());
     }//GEN-LAST:event_jLabel5MousePressed
 
     private void jLabel5MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseReleased
-        
+
         contraseña.setText("Contraseña: " + conAsteriscos);
     }//GEN-LAST:event_jLabel5MouseReleased
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
+        CambiarContraseñaJDialog cCJD = new CambiarContraseñaJDialog(this,true,sesion);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,7 +248,6 @@ public class DatosPersonalesJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JLabel municipio;
     private javax.swing.JLabel nomUsuario;
     private javax.swing.JLabel nombre;

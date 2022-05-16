@@ -10,6 +10,7 @@ package dao.excepciones;
  */
 public class SinTipoUsuario extends Exception {
     
+    @Override
     public String toString(){
     
         return "No se ha obtenido el atributo tipo de usuario o es nulo";

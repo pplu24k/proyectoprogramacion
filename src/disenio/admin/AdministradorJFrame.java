@@ -4,7 +4,8 @@
  */
 package disenio.admin;
 
-import disenio.generico.DatosPersonalesJDialog;
+
+import disenio.generico.DatosPersonalesJFrame;
 import modelo.SistemaFederacionJudo;
 import modelo.administracion_registro.*;
 
@@ -141,7 +142,7 @@ public class AdministradorJFrame extends javax.swing.JFrame {
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         
-        DatosPersonalesJDialog cd = new DatosPersonalesJDialog(this,true,sesion);
+        DatosPersonalesJFrame cd = new DatosPersonalesJFrame(sesion);
     }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
